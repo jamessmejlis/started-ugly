@@ -19,6 +19,10 @@ A deliberately ugly web directory showing the **embarrassing start** of famous p
 3. **Shareability** as the engine: per-entry pages and OG images designed to travel on X/LinkedIn/HN.
 4. Ship fast. The project must practice what it preaches — days, not weeks.
 
+## Audience
+
+Startup founders, indie hackers, bootstrappers, and solo founders — especially the modern build-in-public crowd on X — plus the wider startup ecosystem (VCs, operators, startup media). Content selection, tone, and examples should skew toward this modern builder culture, with the classic big-brand stories as the anchor contrast.
+
 ## Decisions log (from brainstorming)
 
 | Decision | Choice |
@@ -27,10 +31,12 @@ A deliberately ugly web directory showing the **embarrassing start** of famous p
 | Entry depth | Screenshot pair + 1–3 sentence micro-story |
 | Launch catalog | 15–20 famous entries |
 | Name | Deferred to community poll; `started-ugly` is the placeholder |
-| Aesthetic | Deliberately ugly (the design is the joke) |
+| Audience | Founders, indie hackers, bootstrappers, solo founders, wider startup ecosystem (VCs) |
+| Aesthetic | "Deliberately ugly" as creative direction; visual design executed separately via Claude Design (see `docs/design-brief.md`) |
 | Success metric | Public submissions + the founder relationships they start |
 | Architecture | Static Next.js, content in repo, zero database |
 | Submission channels | Form-to-inbox (Resend) AND GitHub PR/issue templates |
+| Newsletter provider | beehiiv (simple embed in v1) |
 
 ## Prior art & differentiation
 
@@ -83,7 +89,7 @@ All pages statically generated. Only runtime code: the submission API route and 
 
 ## Share mechanics
 
-- **Per-entry OG images** generated with `next/og` (`ImageResponse`): an ugly-styled composite of the then/now screenshots — "AIRBNB, 2008 → 2026. It started ugly." This composite is the screenshot-bait that travels in feeds. Entries without a `nowImage` (community) get a then-only card: "PRODUCT, 2026 → ?. They shipped ugly. Your move."
+- **Per-entry OG images** generated with `next/og` (`ImageResponse`): a composite of the then/now screenshots — "AIRBNB, 2008 → 2026. It started ugly." — styled per the Claude Design direction. This composite is the screenshot-bait that travels in feeds. Entries without a `nowImage` (community) get a then-only card: "PRODUCT, 2026 → ?. They shipped ugly. Your move."
 - Share links (X, LinkedIn, copy-link) on every entry page with pre-filled text.
 - `src/lib/site.ts` + `NEXT_PUBLIC_SITE_URL` drive `metadataBase`, sitemap, robots, and absolute OG URLs (Marulho convention).
 
@@ -103,16 +109,17 @@ All pages statically generated. Only runtime code: the submission API route and 
 
 ## Email capture
 
-Embedded newsletter-provider signup on `/` (above the fold area) and in every entry-page footer ("Get the story behind the next ugly MVP").
+As simple as possible: a **beehiiv embed form** on `/` and in every entry-page footer ("Get the story behind the next ugly MVP"). No custom API integration, no double-opt-in logic of our own — beehiiv handles everything. beehiiv is the committed provider for the newsletter stage, so no provider migration is anticipated.
 
-**Pre-launch decision, does not block the build:** provider choice. Default recommendation: **Buttondown** (lean, indie-friendly); alternative: **Kit** if more growth tooling is wanted later. The layout reserves the embed slot; swapping providers is a one-snippet change.
+## Design direction
 
-## Aesthetic (deliberately ugly)
+Visual design is handled separately via **Claude Design** — this spec deliberately makes no specific visual choices (fonts, colors, CSS approach, component styling). The handover brief lives at [`docs/design-brief.md`](../../design-brief.md).
 
-- Times New Roman / system fonts, default blue underlined links, visible table borders, default-looking buttons. Craigslist energy.
-- One small global CSS file. **No Tailwind, no UI libraries.**
-- Constraints under the joke: fast, readable, accessible (real alt text, semantic HTML, sufficient contrast), fine on mobile. Ugly ≠ broken.
-- No dark mode (it's ugly in every theme).
+Spec-level constraints that survive whatever Claude Design produces:
+
+- The creative direction is **"deliberately ugly as a feature"** — the site's own embarrassing-v1-ness is part of the message. How literally that's executed is Claude Design's call.
+- Fast, readable, accessible (real alt text, semantic HTML, sufficient contrast), works on mobile. Ugly ≠ broken.
+- Lean output: no heavy UI dependencies; styling approach (plain CSS vs. Tailwind) follows whatever the Claude Design handover produces.
 
 ## Stack & deployment
 
@@ -125,12 +132,12 @@ Embedded newsletter-provider signup on `/` (above the fold area) and in every en
 
 ## Content sourcing workflow (pre-launch task — the long pole)
 
-1. Pick 15–20 famous entries with genuinely embarrassing starts, mixing all four tactics:
-   - **ugly-v1:** Airbnb '08, Amazon '95, Google '98, Facebook '04, Stripe '11, Craigslist (bonus: still ugly — fun outlier), Reddit '05, eBay/AuctionWeb '95, Netflix '99, Twitter '06, Uber '10, YouTube '05, LinkedIn '03, Spotify '08
-   - **dont-scale:** Airbnb (founders photographed listings door-to-door; sold cereal boxes), DoorDash (founders did the deliveries themselves), Zappos (founder bought shoes retail and shipped them), Stripe (Collison brothers installed it on users' laptops on the spot), Product Hunt (started as a Linkydink email list)
-   - **sold-first:** Amigo AI ($12K collected pre-code, now Series A — pmf.show), Tesla Roadster pre-orders, Buffer (pricing page before product)
-   - **duct-tape-demo:** Dropbox (MVP was a narrated demo video), Amigo AI (voice-cloned coach demo stitched in Sony Vegas), Zapier (early manual "Wizard of Oz" integrations)
-   Some companies legitimately appear once but inform another entry's story; one entry per company, pick its strongest tactic. Source library: Wayback Machine, Paul Graham's "Do Things That Don't Scale", founder interviews/podcasts (e.g. pmf.show), The Lean Startup canon.
+1. Pick 15–20 famous entries with genuinely embarrassing starts, mixing all four tactics AND mixing eras — roughly half classic giants (the anchor contrast), half modern builder/bootstrapper/indie stories the target audience actually identifies with:
+   - **ugly-v1:** *Classic:* Airbnb '08, Amazon '95, Google '98, Facebook '04, Stripe '11, Craigslist (bonus: still ugly — fun outlier), Reddit '05, eBay/AuctionWeb '95, Netflix '99, Twitter '06, Uber '10, YouTube '05, LinkedIn '03. *Modern:* Gumroad (Sahil Lavingia's weekend v1), levels.io's 12-startups-in-12-months era sites, Indie Hackers v1.
+   - **dont-scale:** *Classic:* Airbnb (founders photographed listings door-to-door; sold cereal boxes), DoorDash (founders did the deliveries themselves), Zappos (founder bought shoes retail and shipped them), Stripe (Collison brothers installed it on users' laptops on the spot). *Modern:* Product Hunt (started as a Linkydink email list), Nomad List (launched as a public Google Spreadsheet people filled in).
+   - **sold-first:** *Classic:* Tesla Roadster pre-orders, Buffer (pricing page before product existed). *Modern:* Amigo AI ($12K collected pre-code, now Series A — The PMF Show), pre-sale launches from the build-in-public community on X.
+   - **duct-tape-demo:** *Classic:* Dropbox (MVP was a narrated demo video), Zapier (early manual "Wizard of Oz" integrations). *Modern:* Amigo AI (voice-cloned coach demo stitched in Sony Vegas), Midjourney (entire product UI was a Discord bot).
+   One entry per company; pick its strongest tactic. Source library: Wayback Machine, Paul Graham's "Do Things That Don't Scale", The PMF Show (Pablo Srugo), Lenny's Podcast, Indie Hackers interviews, the build-in-public community on X, The Lean Startup canon. Modern founders are also networking targets: featuring them + tagging them on launch is part of the distribution plan.
 2. Capture "then" artifacts: website screenshots from Wayback captures (`bunx playwright screenshot` against `web.archive.org` URLs), or sourced photos/video frames for non-website artifacts; record the backing source as `sourceUrl`.
 3. Capture "now" screenshots from live sites.
 4. Write each micro-story; **fact-check every story against at least one real source** (no embellished startup folklore).
