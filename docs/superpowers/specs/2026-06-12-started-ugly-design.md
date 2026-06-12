@@ -6,7 +6,7 @@
 
 ## What this is
 
-A deliberately ugly web directory showing the **first shipped version** of famous products next to **how they look today** — plus a community wall where early-stage founders get their own ugly v1 featured alongside the big names.
+A deliberately ugly web directory showing the **embarrassing start** of famous products — the ugly first version, the manual hack, the pre-code sale, the duct-taped demo — next to **how they look today**. Plus a community wall where early-stage founders get their own ugly v1 featured alongside the big names.
 
 **The problem it attacks:** new founders hide in the comfort zone of building features instead of shipping to real humans, because they compare their day-1 product to a big brand's year-15 product. The site creates visceral contrast to break that perfectionist block. Anchor quote (Reid Hoffman): *"If you aren't embarrassed by the first version of your product, you've shipped too late."*
 
@@ -36,28 +36,38 @@ A deliberately ugly web directory showing the **first shipped version** of famou
 
 [Version Museum](https://versionmuseum.com) and [FirstVersions.com](https://firstversions.com) already do visual history of products. They are encyclopedic/nostalgic. This site is **founder psychology, not archaeology**: the contrast exists to make a founder ship this week. Differentiators: the micro-stories about what founders actually did at the embarrassing stage, the community wall (your ugly v1 next to Airbnb's), the submission flywheel, and the explicit call to action.
 
+A key widening: the embarrassing start isn't always an ugly website. The directory covers four **tactic types** (see content model): ugly first versions, doing things that don't scale (Airbnb's founders photographing apartments door-to-door), selling before building (Amigo AI collected [$12K pre-code](https://www.pmf.show/blog/amigo-ai-healthcare-product-market-fit-series-a) and raised a Series A), and duct-taped demos (Dropbox's video MVP; Amigo's voice-cloned demo stitched in Sony Vegas). Version Museum can't tell those stories at all — they have no screenshots. This site can, and they're the strongest perfectionism-breakers in the set.
+
 ## Content model
 
 No database. One typed array in `src/data/entries.ts`; screenshots committed to `public/screenshots/`.
 
 ```ts
+type Tactic = 'ugly-v1' | 'dont-scale' | 'sold-first' | 'duct-tape-demo';
+// Display labels: "Ugly v1" | "Did things that don't scale"
+//               | "Sold it before building it" | "Duct-taped the demo"
+
 type Entry = {
   slug: string;            // unique, kebab-case
   name: string;            // company/product name
   kind: 'famous' | 'community';
-  thenImage: string;       // path under /public/screenshots/
+  tactic: Tactic;          // rendered as a badge on cards and entry pages
+  thenImage: string;       // path under /public/screenshots/ — see "then artifact" below
+  thenCaption?: string;    // explains non-obvious artifacts, e.g. "The entire MVP was this 3-minute video"
   thenYear: number;
   nowImage?: string;       // optional: community entries are shipping NOW
   nowYear?: number;        // absent => card shows "Now: TBD — they just shipped"
   story: string;           // 1–3 sentence micro-story, fact-checked
-  sourceUrl?: string;      // famous: link to the actual Wayback Machine capture
+  sourceUrl?: string;      // famous: Wayback capture, interview, or article backing the story
   founderName?: string;    // community only
   founderLink?: string;    // community only: X/LinkedIn
   productUrl?: string;     // community only: live product (the backlink incentive)
 };
 ```
 
-Famous and community entries share one model and one rendering path; `kind` controls which section they appear in and which fields render.
+**The "then" artifact is any visual of the embarrassing start**, not just a website screenshot: a Wayback capture, the Airbnb cereal box photo, a frame from Dropbox's demo video, a landing-page-with-no-product, a screenshot of the cold DM that got the first customer. `thenImage` stays required — this is a visual directory, and the curator's job includes finding or recreating a representative artifact. `thenCaption` carries the explanation when the image isn't self-evident.
+
+Famous and community entries share one model and one rendering path; `kind` controls which section they appear in and which fields render. `tactic` is a badge only in v1 — no filtering or per-tactic sections (pointless under ~50 entries). The four tactics also seed future newsletter segments.
 
 ## Pages
 
@@ -79,7 +89,7 @@ All pages statically generated. Only runtime code: the submission API route and 
 
 ## Submissions
 
-**Form path (`/submit`).** Fields: founder name, email, product name, product URL, founder X/LinkedIn link, story ("what did you ship and what's ugly about it?"). **No file upload, deliberately.** The route emails James via Resend (free tier); James replies to collect the screenshot. The reply is the networking touchpoint by design, and the form says so: "I'll personally reply within a couple of days to get your screenshot." No storage, no multipart handling.
+**Form path (`/submit`).** Fields: founder name, email, product name, product URL, founder X/LinkedIn link, story ("what did you ship, and what's embarrassing about it? Ugly screens, manual hacks, selling before building, duct-taped demos — all count"). **No file upload, deliberately.** The route emails James via Resend (free tier); James replies to collect the screenshot. The reply is the networking touchpoint by design, and the form says so: "I'll personally reply within a couple of days to get your screenshot." No storage, no multipart handling.
 
 **GitHub path.** Public repo with:
 - An issue template: "Submit your ugly MVP"
@@ -115,8 +125,13 @@ Embedded newsletter-provider signup on `/` (above the fold area) and in every en
 
 ## Content sourcing workflow (pre-launch task — the long pole)
 
-1. Pick 15–20 famous products with genuinely ugly/embarrassing v1s. Candidate pool: Airbnb '08, Amazon '95, Google '98, Facebook '04, Stripe '11, Craigslist (bonus: still ugly — fun outlier), Reddit '05, eBay/AuctionWeb '95, Netflix '99, Twitter '06, Dropbox (MVP was a demo video), Product Hunt (started as an email list), Instagram (Burbn), Slack, Shopify, Uber '10, YouTube '05, LinkedIn '03, Spotify '08, Notion.
-2. Capture "then" screenshots from Wayback Machine captures (`bunx playwright screenshot` against `web.archive.org` URLs); record each capture URL as `sourceUrl`.
+1. Pick 15–20 famous entries with genuinely embarrassing starts, mixing all four tactics:
+   - **ugly-v1:** Airbnb '08, Amazon '95, Google '98, Facebook '04, Stripe '11, Craigslist (bonus: still ugly — fun outlier), Reddit '05, eBay/AuctionWeb '95, Netflix '99, Twitter '06, Uber '10, YouTube '05, LinkedIn '03, Spotify '08
+   - **dont-scale:** Airbnb (founders photographed listings door-to-door; sold cereal boxes), DoorDash (founders did the deliveries themselves), Zappos (founder bought shoes retail and shipped them), Stripe (Collison brothers installed it on users' laptops on the spot), Product Hunt (started as a Linkydink email list)
+   - **sold-first:** Amigo AI ($12K collected pre-code, now Series A — pmf.show), Tesla Roadster pre-orders, Buffer (pricing page before product)
+   - **duct-tape-demo:** Dropbox (MVP was a narrated demo video), Amigo AI (voice-cloned coach demo stitched in Sony Vegas), Zapier (early manual "Wizard of Oz" integrations)
+   Some companies legitimately appear once but inform another entry's story; one entry per company, pick its strongest tactic. Source library: Wayback Machine, Paul Graham's "Do Things That Don't Scale", founder interviews/podcasts (e.g. pmf.show), The Lean Startup canon.
+2. Capture "then" artifacts: website screenshots from Wayback captures (`bunx playwright screenshot` against `web.archive.org` URLs), or sourced photos/video frames for non-website artifacts; record the backing source as `sourceUrl`.
 3. Capture "now" screenshots from live sites.
 4. Write each micro-story; **fact-check every story against at least one real source** (no embellished startup folklore).
 5. Optimize images (consistent width, compressed).
