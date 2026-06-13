@@ -6,6 +6,8 @@ import { ShareLinks } from "@/components/ShareLinks";
 import { entries, getEntry, TACTIC_LABELS } from "@/data/entries";
 import { siteUrl } from "@/lib/site";
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return entries.map((e) => ({ slug: e.slug }));
 }
