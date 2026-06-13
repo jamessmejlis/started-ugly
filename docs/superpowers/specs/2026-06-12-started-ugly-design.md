@@ -145,6 +145,8 @@ Spec-level constraints that survive whatever Claude Design produces:
 
 Legal posture: screenshots of historical websites for commentary/education are standard fair-use practice (Version Museum operates the same way); attribute via Wayback source links. If any brand objects, remove their entry.
 
+**Catalog growth (post-v1) lives in [`docs/content-roadmap.md`](../../content-roadmap.md)** — structured seeding batches beyond the Wayback candidate pool above: PMF Show transcript mining, the TrustMRR leaderboard (indie products + verified MRR), and Starter Story case studies.
+
 ## Error handling
 
 - **Build-time content validation** (test, runs in CI/`bun test`): every entry has required fields, image files exist on disk, slugs unique, community entries have founder fields. Content bugs fail the build, never reach production.
