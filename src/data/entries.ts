@@ -804,6 +804,87 @@ export const entries: Entry[] = [
       cite: "Arvid Kahl, co-founder of FeedbackPanda",
     },
   },
+  {
+    slug: "shipfast",
+    name: "ShipFast",
+    kind: "famous",
+    tactic: "ugly-v1",
+    thenImage: "/screenshots/shipfast-then.png",
+    thenCaption: "shipfa.st on launch day, Sept 2023 — '$50 off for the first 50 customers,' 28 makers in.",
+    thenYear: 2023,
+    nowImage: "/screenshots/shipfast-now.png",
+    nowYear: new Date().getFullYear(),
+    story:
+      "After four years and 16 products that topped out around $3K/mo, Marc Lou stopped inventing and bundled the boilerplate he kept rewriting — auth, Stripe, emails — into ShipFast, built in about a week. It made $6,000 in its first 48 hours and crossed $250K in five months, run by one person.",
+    sourceUrl: "https://newsletter.marclou.com/p/i-made-250000-usd-selling-javascript",
+    founderName: "Marc Lou",
+    founderLink: "https://marclou.com",
+    productUrl: "https://shipfa.st",
+    lead: "Marc Lou had 16 flops behind him — so he stopped inventing and just sold the boilerplate he kept rewriting, glued together in a week.",
+    body: [
+      {
+        lead: "The ugly part.",
+        text: "Across four years Marc Lou shipped 16 products, and the best of them made about $3,000 a month. He kept rewriting the same plumbing every time — login, Stripe webhooks, email, a pricing page. So instead of a new idea, he packaged the recycled scraps into a Next.js boilerplate called ShipFast and built the whole thing in roughly a week.",
+      },
+      {
+        lead: "What he shipped anyway.",
+        text: "The launch-day site was a dark landing page, '$50 off for the first 50 customers,' and the line 'Ship your startup in days, not weeks.' He posted it to Product Hunt. It made $6,000 in the first 48 hours.",
+      },
+      {
+        lead: "Now.",
+        text: "ShipFast crossed $250,000 in about five months at near-90% margins and grew into a seven-figure business — run by one person, out of the recycled leftovers of 16 failures.",
+      },
+    ],
+    fileStats: [
+      { label: "Before this", value: "16 products, ~$3K/mo" },
+      { label: "Built in", value: "~a week" },
+      { label: "First 48 hours", value: "$6,000" },
+    ],
+    lesson:
+      "Your 17th scrappy try can beat your first 16 polished ones. Ship the recycled parts — the boring plumbing was the product.",
+  },
+  {
+    slug: "better-sheets",
+    name: "Better Sheets",
+    kind: "famous",
+    tactic: "ugly-v1",
+    thenImage: "/screenshots/bettersheets-then.png",
+    thenCaption: "bettersheets.co, 2020 — a one-day Carrd page selling Loom screen-recordings for $30.",
+    thenYear: 2020,
+    nowImage: "/screenshots/bettersheets-now.png",
+    nowYear: new Date().getFullYear(),
+    story:
+      "Andrew Kamphey built Better Sheets in a single day to prove he could ship fast — a Carrd one-pager and a stack of Loom screen-recordings about Google Sheets, uploaded straight to Gumroad and sold as a $30 lifetime deal. No app, no platform. It grew past $100K in two years with one contractor.",
+    sourceUrl: "https://ideamensch.com/andrew-kamphey/",
+    founderName: "Andrew Kamphey",
+    productUrl: "https://bettersheets.co",
+    lead: "Andrew Kamphey built Better Sheets in one day — a Carrd page and a stack of Loom videos — just to prove he could ship something fast.",
+    body: [
+      {
+        lead: "The ugly part.",
+        text: "Annoyed by an article claiming Google Sheets was useless, Andrew Kamphey decided to ship a product in a single day. It was as scrappy as it gets: a Carrd one-pager over a screenshot of a spreadsheet, screen-recordings made in Loom and uploaded straight to Gumroad, sold as a $30 lifetime deal. No app, no course platform, no custom anything.",
+      },
+      {
+        lead: "What he shipped anyway.",
+        text: "The whole MVP was that landing page and the line 'Buy Now: $30 Lifetime Access.' It worked well enough to keep going — he added more videos as people asked for them, and went full-time on it.",
+      },
+      {
+        lead: "Now.",
+        text: "Better Sheets grew past $100,000 in revenue in about two years, run with a single contractor — built on a Carrd page and a folder of Loom clips.",
+      },
+    ],
+    fileStats: [
+      { label: "Built in", value: "one day" },
+      { label: "The stack", value: "Carrd + Loom + Gumroad" },
+      { label: "~2 years later", value: "$100K+ revenue" },
+    ],
+    lesson:
+      "Ship in a day with the tools you already have. A Carrd page and a Loom video can be a real, paying product.",
+    quote: {
+      text: "I launched Better Sheets in one day because another project was taking a lot longer than expected.",
+      cite: "Andrew Kamphey, founder of Better Sheets",
+    },
+  },
 ];
 
 export const famousEntries = entries.filter((e) => e.kind === "famous");
