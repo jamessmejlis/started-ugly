@@ -71,6 +71,15 @@ describe("content integrity", () => {
     }
   });
 
+  test("quotes are attributed and concise", () => {
+    for (const e of entries) {
+      if (!e.quote) continue;
+      expect(e.quote.text.trim().length).toBeGreaterThan(0);
+      expect(e.quote.text.length).toBeLessThanOrEqual(240);
+      expect(e.quote.cite.trim().length).toBeGreaterThan(0);
+    }
+  });
+
   test("images are under the 500KB weight ceiling", () => {
     for (const e of entries) {
       const images = [e.thenImage, e.nowImage].filter(Boolean) as string[];

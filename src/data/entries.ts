@@ -30,6 +30,7 @@ export type Entry = {
   fileStats?: { label: string; value: string }[]; // "The file" key/value rows
   tactics?: Tactic[]; // multiple tactics (defaults to [tactic])
   lesson?: string; // italic "The lesson:" note
+  quote?: { text: string; cite: string }; // highlighted founder pull-quote on the detail page
   featuredCard?: { before: string; now: string }; // home featured-card blurb
 };
 
@@ -44,8 +45,29 @@ export const entries: Entry[] = [
     nowImage: "/screenshots/craigslist-now.png",
     nowYear: new Date().getFullYear(),
     story:
-      "Craig Newmark started it in 1995 as a cc'd email list of San Francisco events. The website came later — and has barely changed since.",
+      "Craig Newmark started Craigslist in 1995 as a cc'd email list of San Francisco events. The website came later — blue links on grey, no design — and has barely changed since, on purpose.",
     sourceUrl: "https://web.archive.org/web/19981202212015/http://www.craigslist.org/",
+    lead: "Craig Newmark started it as an email to friends — and 30 years on, it still looks like one.",
+    body: [
+      {
+        lead: "The ugly part.",
+        text: "It began as Craig Newmark emailing event listings to a few dozen friends. When the list outgrew email he dropped it onto a plain HTML page — blue links on grey, no images, no design. People called it ugly. He left it that way.",
+      },
+      {
+        lead: "Why it stuck.",
+        text: "The plainness was the point: pages loaded instantly, listings were trivial to scan, and nothing sat between a buyer and a seller. Keeping all but a few categories free meant there was little reason to go anywhere else.",
+      },
+      {
+        lead: "Now.",
+        text: "One of the most-visited sites in the US, still served from the same spartan template it launched with.",
+      },
+    ],
+    fileStats: [
+      { label: "Started as", value: "a cc'd email list" },
+      { label: "Design philosophy", value: "don't" },
+      { label: "Redesigns since", value: "~none" },
+    ],
+    lesson: "Ugly that works beats pretty that doesn't. Don't fix what your users don't want fixed.",
   },
   {
     slug: "google",
@@ -57,8 +79,29 @@ export const entries: Entry[] = [
     nowImage: "/screenshots/google-now.png",
     nowYear: new Date().getFullYear(),
     story:
-      "Began as a Stanford research project called BackRub. The famously bare 1998 homepage stayed bare partly because the founders didn't do fancy HTML.",
+      "Larry Page and Sergey Brin began it at Stanford as a research project called BackRub. The famously bare 1998 homepage stayed bare partly because the founders didn't do fancy HTML — and the speed became the selling point.",
     sourceUrl: "https://web.archive.org/web/19981202230410/http://www.google.com/",
+    lead: "Larry Page and Sergey Brin's homepage stayed bare partly because they didn't do much HTML.",
+    body: [
+      {
+        lead: "The ugly part.",
+        text: "Two Stanford PhD students, Larry Page and Sergey Brin, ran their search engine off university servers under the name BackRub. The 1998 homepage was a logo, a box, and two buttons — part design choice, part the fact that they weren't web designers.",
+      },
+      {
+        lead: "Why it worked.",
+        text: "With nothing to load, the page was instant — and the results were simply better than anyone else's. Bare wasn't a phase to grow out of; it was the product telling you it was fast.",
+      },
+      {
+        lead: "Now.",
+        text: "The front door to the internet for billions of people, and still essentially a box on a white page.",
+      },
+    ],
+    fileStats: [
+      { label: "Founded", value: "1998" },
+      { label: "Started as", value: "a project called BackRub" },
+      { label: "Day-one homepage", value: "a logo + a box" },
+    ],
+    lesson: "Constraints can be features. Their lack of polish became the fastest page on the web.",
   },
   {
     slug: "amazon",
@@ -70,8 +113,29 @@ export const entries: Entry[] = [
     nowImage: "/screenshots/amazon-now.png",
     nowYear: new Date().getFullYear(),
     story:
-      "Launched in 1995 selling only books, run out of Jeff Bezos's garage. A bell rang for every order — within weeks it rang so often they switched it off.",
+      "Jeff Bezos launched Amazon in 1995 selling only books, run out of his Seattle garage. A bell rang for every order — within weeks it rang so often they switched it off.",
     sourceUrl: "https://web.archive.org/web/19990828014913/http://www.amazon.com/",
+    lead: "Jeff Bezos ran it out of a garage, with a bell that rang on every sale — until it wouldn't stop.",
+    body: [
+      {
+        lead: "The ugly part.",
+        text: "Amazon started as a bare online bookstore Jeff Bezos ran from a rented garage, packing orders on desks made of doors laid across sawhorses. The site was a plain, text-heavy catalog; the team celebrated each sale with a literal bell.",
+      },
+      {
+        lead: "What they shipped anyway.",
+        text: "It didn't need to be pretty — it needed every book in print and reliable shipping. Orders came in faster than they could pack them, and the novelty bell got switched off within weeks.",
+      },
+      {
+        lead: "Now.",
+        text: "A multi-trillion-dollar company selling roughly everything — but it started with books in a garage.",
+      },
+    ],
+    fileStats: [
+      { label: "Sold at first", value: "books, only" },
+      { label: "Day-one HQ", value: "a rented garage" },
+      { label: "Order bell", value: "off within weeks" },
+    ],
+    lesson: "Start narrow and unglamorous. Books in a garage was enough of a wedge.",
   },
   {
     slug: "airbnb",
@@ -84,13 +148,13 @@ export const entries: Entry[] = [
     nowImage: "/screenshots/airbnb-now.png",
     nowYear: new Date().getFullYear(),
     story:
-      "When listings looked bad, the founders flew to New York and photographed hosts' apartments themselves — and funded the company selling $40 election-themed cereal boxes.",
+      "When listings looked bad, Brian Chesky and Joe Gebbia flew to New York and photographed hosts' apartments themselves — and funded the company selling $40 election-themed cereal boxes.",
     sourceUrl: "https://web.archive.org/web/20081219124926/http://airbedandbreakfast.com/",
-    lead: "Three guys who couldn't make rent put air mattresses on their floor — and a craigslist clone online to fill them.",
+    lead: "Brian Chesky and Joe Gebbia couldn't make rent, so they put air mattresses on their floor — and a craigslist clone online to fill them.",
     body: [
       {
         lead: "The ugly part.",
-        text: "A one-page site cloned from craigslist. Grey placeholder photos, no map, no payments, no reviews. To book, you emailed the host and hoped they were real. The founders funded it selling novelty cereal door to door.",
+        text: "A one-page site cloned from craigslist. Grey placeholder photos, no map, no payments, no reviews. To book, you emailed the host and hoped they were real. They funded it selling novelty cereal door to door.",
       },
       {
         lead: "What they shipped anyway.",
@@ -126,8 +190,29 @@ export const entries: Entry[] = [
     nowImage: "/screenshots/dropbox-now.png",
     nowYear: new Date().getFullYear(),
     story:
-      "Before the product worked at scale, Drew Houston shipped a 3-minute screencast demo tuned for Digg readers. The waiting list jumped from 5,000 to 75,000 overnight.",
+      "Before the product worked at scale, Drew Houston shipped a 3-minute screencast demo tuned for Digg and Hacker News readers. The waiting list jumped from 5,000 to 75,000 overnight.",
     sourceUrl: "https://web.archive.org/web/20090101231252/http://getdropbox.com/",
+    lead: "Drew Houston's MVP wasn't an app — it was a three-minute video, packed with in-jokes for Digg.",
+    body: [
+      {
+        lead: "The ugly part.",
+        text: "Syncing files flawlessly across machines was nearly impossible to demo half-built, so Drew Houston didn't build it first. He recorded a three-minute screencast of how it would work, salted with references Digg and Hacker News users would catch.",
+      },
+      {
+        lead: "What it proved.",
+        text: "The video did the selling. The beta waiting list jumped from 5,000 to 75,000 people overnight — demand confirmed before the hardest engineering was finished.",
+      },
+      {
+        lead: "Now.",
+        text: "A public company used by hundreds of millions — but the first version that caught fire was a video.",
+      },
+    ],
+    fileStats: [
+      { label: "The MVP", value: "a 3-min demo video" },
+      { label: "Waitlist overnight", value: "5k → 75k" },
+      { label: "Code shipped first?", value: "no — the video" },
+    ],
+    lesson: "If the product is too hard to demo, demo the idea. A video can validate before code can.",
   },
   {
     slug: "amigo-ai",
@@ -140,13 +225,13 @@ export const entries: Entry[] = [
     nowImage: "/screenshots/amigo-ai-now.png",
     nowYear: new Date().getFullYear(),
     story:
-      "To sell an AI product that didn't exist, Ali Khokhar grabbed a coach's voice off YouTube, cloned it with ElevenLabs, and stitched a scripted demo together in Sony Vegas Pro. \"I got $12,000 in revenue,\" he said, \"and I have not written a single line of code.\"",
+      "To sell an AI product that didn't exist, Ali Khokhar cloned a coach's voice off YouTube with ElevenLabs and stitched a scripted demo together in Sony Vegas Pro — then collected $12,000 from real buyers before building anything.",
     sourceUrl:
       "https://pmfshow.buzzsprout.com/1889238/episodes/19285585-he-churned-100-of-his-revenue-on-purpose-then-grew-10x-to-2m-arr-in-under-12-months-ali-khokhar-founder-of-amigo-ai",
     founderName: "Ali Khokhar",
     founderLink: "https://www.linkedin.com/in/khokharali",
     productUrl: "https://www.amigo.ai",
-    lead: "He hadn't written a line of code — so he faked the entire product in a video editor.",
+    lead: "Ali Khokhar hadn't written a line of code — so he faked the entire product in a video editor.",
     body: [
       {
         lead: "The ugly part.",
@@ -168,6 +253,10 @@ export const entries: Entry[] = [
     ],
     tactics: ["duct-tape-demo", "sold-first"],
     lesson: "A convincing fake is a real test. Sell the promise first, then go build it.",
+    quote: {
+      text: "I got $12,000 in revenue, and I have not written a single line of code.",
+      cite: "Ali Khokhar, The Product Market Fit Show",
+    },
   },
   {
     slug: "butcherbox",
@@ -186,7 +275,7 @@ export const entries: Entry[] = [
     founderName: "Mike Salguero",
     founderLink: "https://www.linkedin.com/in/mikesalguero/",
     productUrl: "https://www.butcherbox.com",
-    lead: "He sold the boxes before he had a way to ship them.",
+    lead: "Mike Salguero sold the boxes before he had any way to ship them.",
     body: [
       {
         lead: "The ugly part.",
@@ -207,6 +296,10 @@ export const entries: Entry[] = [
       { label: "Pre-sold", value: "$210K+ / 1,155 backers" },
     ],
     lesson: "If people pay before it exists, you've found demand — not just interest.",
+    quote: {
+      text: "We went out to raise $25K and in day one, we almost doubled our goal.",
+      cite: "Mike Salguero, The Product Market Fit Show",
+    },
   },
   {
     slug: "spot-and-tango",
@@ -219,12 +312,12 @@ export const entries: Entry[] = [
     nowImage: "/screenshots/spot-and-tango-now.jpg",
     nowYear: new Date().getFullYear(),
     story:
-      "Russell Breuer left private equity to cook fresh dog food by hand in a rented kitchen. \"I'll wake up at five o'clock in the morning,\" he said. \"I'll take the subway. I'll drop them off on her doorstep.\" That was the delivery network.",
+      "Russell Breuer left private equity to cook fresh dog food by hand in a rented kitchen, then hand-delivered the first orders himself — riding the NYC subway at dawn to drop boxes on customers' doorsteps.",
     sourceUrl:
       "https://pmfshow.buzzsprout.com/1889238/episodes/18540705-he-sold-dog-food-from-his-condo-now-he-does-100m-a-year-russell-breuer-founder-of-spot-tango",
     founderName: "Russell Breuer",
     productUrl: "https://www.spotandtango.com",
-    lead: "The delivery network was him, on the 5 a.m. subway, holding the boxes.",
+    lead: "Russell Breuer's delivery network was him — on the 5 a.m. subway, holding the boxes.",
     body: [
       {
         lead: "The ugly part.",
@@ -245,6 +338,10 @@ export const entries: Entry[] = [
       { label: "Now", value: "$100M+ a year" },
     ],
     lesson: "Do it by hand until people prove they want it. Automate the proven part.",
+    quote: {
+      text: "I'll wake up at five o'clock in the morning. I'll take the subway. I'll drop them off on her doorstep.",
+      cite: "Russell Breuer, The Product Market Fit Show",
+    },
   },
   {
     slug: "boldvoice",
@@ -257,12 +354,12 @@ export const entries: Entry[] = [
     nowImage: "/screenshots/boldvoice-now.png",
     nowYear: new Date().getFullYear(),
     story:
-      "BoldVoice's first version was accent lessons their Hollywood coach scripted and shot from his own apartment, covering one language — Hindi — with rough AI feedback. The earliest users came from a Reddit thread called \"Judge My Accent.\"",
+      "Anada Lakra launched BoldVoice as accent lessons her Hollywood coach scripted and filmed from his own apartment — one language, Hindi, with rough AI feedback. The earliest users came from a Reddit thread called \"Judge My Accent.\"",
     sourceUrl:
       "https://pmfshow.buzzsprout.com/1889238/episodes/18977152-she-bet-on-a-consumer-app-when-every-vc-wanted-b2b-then-grew-to-10m-arr-anada-lakra-founder-of-boldvoice",
     founderName: "Anada Lakra",
     productUrl: "https://www.boldvoice.com",
-    lead: "The first lessons were filmed on a phone, in the coach's apartment, in one language.",
+    lead: "Anada Lakra's first lessons were filmed on a phone, in the coach's apartment, in one language.",
     body: [
       {
         lead: "The ugly part.",
@@ -295,12 +392,12 @@ export const entries: Entry[] = [
     nowImage: "/screenshots/aragon-ai-now.jpg",
     nowYear: new Date().getFullYear(),
     story:
-      "Aragon launched as a bare black page promising AI design \"10x faster, 10x cheaper,\" then narrowed to headshots. They were, in Wesley Tian's words, \"atrocious\" — most users couldn't get one usable photo out of 250 — so he hand-fixed orders himself, an hour at a time.",
+      "Wesley Tian launched Aragon as a bare black page promising AI design \"10x faster, 10x cheaper,\" then narrowed to headshots so bad most users couldn't get one usable photo out of 250 — so he hand-fixed orders himself, an hour at a time.",
     sourceUrl:
       "https://pmfshow.buzzsprout.com/1889238/episodes/16756049-1st-time-founder-grows-ai-headshot-app-from-0-to-10m-arr-in-2-years-with-no-funding-wesley-tian-founder-of-aragon",
     founderName: "Wesley Tian",
     productUrl: "https://www.aragon.ai",
-    lead: "The first AI headshots were, in the founder's own word, \"atrocious.\"",
+    lead: "Wesley Tian shipped AI headshots so bad most users got nothing usable — then fixed them by hand.",
     body: [
       {
         lead: "The ugly part.",
@@ -322,6 +419,10 @@ export const entries: Entry[] = [
     ],
     tactics: ["ugly-v1", "dont-scale"],
     lesson: "Ship it broken, then close the gap by hand until the product can do it for you.",
+    quote: {
+      text: "They were atrocious. They were so bad.",
+      cite: "Wesley Tian, The Product Market Fit Show",
+    },
   },
 ];
 

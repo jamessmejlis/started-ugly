@@ -77,6 +77,13 @@ export default async function EntryPage({
           Drag the handle — {entry.name}, {entry.thenYear} → {entry.nowYear ?? "now"}.
         </p>
 
+        {entry.quote && (
+          <blockquote className="entry__quote">
+            &ldquo;{entry.quote.text}&rdquo;
+            <cite>— {entry.quote.cite}</cite>
+          </blockquote>
+        )}
+
         <div className="entry__body">
           <div>
             {entry.body ? (
