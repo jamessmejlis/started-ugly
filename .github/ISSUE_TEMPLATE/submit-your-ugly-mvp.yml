@@ -1,0 +1,25 @@
+name: Submit your ugly MVP
+description: Get your embarrassing first version featured next to Airbnb's.
+title: "Ugly MVP: <your product name>"
+labels: [submission]
+body:
+  - type: input
+    id: product
+    attributes: { label: Product name + URL }
+    validations: { required: true }
+  - type: input
+    id: founder
+    attributes: { label: Your name + X/LinkedIn link }
+    validations: { required: true }
+  - type: textarea
+    id: story
+    attributes:
+      label: What did you ship, and what's embarrassing about it?
+      description: Ugly screens, manual hacks, selling before building, duct-taped demos — all count.
+    validations: { required: true }
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: Screenshot of the ugly version
+      description: Drag and drop an image here.
+    validations: { required: true }
