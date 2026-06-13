@@ -27,19 +27,21 @@ export function validateSubmission(input: unknown): SubmissionResult {
   const raw = input as Record<string, unknown>;
   const errors: string[] = [];
 
-  const str = (key: string, min: number, max: number) => {
+  const str = (key: string, min: number, max: number, singleLine = false) => {
     const v = typeof raw[key] === "string" ? (raw[key] as string).trim() : "";
     if (v.length < min || v.length > max) {
       errors.push(`${key} must be ${min}–${max} characters`);
+    } else if (singleLine && /[\r\n]/.test(v)) {
+      errors.push(`${key} must be a single line`);
     }
     return v;
   };
 
-  const founderName = str("founderName", 1, 100);
-  const email = str("email", 3, 200);
-  const productName = str("productName", 1, 100);
-  const productUrl = str("productUrl", 1, 500);
-  const founderLink = str("founderLink", 1, 500);
+  const founderName = str("founderName", 1, 100, true);
+  const email = str("email", 3, 200, true);
+  const productName = str("productName", 1, 100, true);
+  const productUrl = str("productUrl", 1, 500, true);
+  const founderLink = str("founderLink", 1, 500, true);
   const story = str("story", 20, 2000);
 
   if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.push("email is invalid");

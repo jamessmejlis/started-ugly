@@ -47,4 +47,10 @@ describe("validateSubmission", () => {
     if (r.ok) expect(r.data.productName).toBe("ShipFastly");
     expect(r.ok).toBe(true);
   });
+
+  test("rejects newlines in single-line fields", () => {
+    expect(validateSubmission({ ...valid, productName: "Ship\r\nBcc: x@evil.com" }).ok).toBe(false);
+    expect(validateSubmission({ ...valid, founderName: "Ada\nFAKE: line" }).ok).toBe(false);
+    expect(validateSubmission({ ...valid, story: "Line one.\nLine two — stories may be multi-line padding padding." }).ok).toBe(true);
+  });
 });
