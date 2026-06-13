@@ -553,6 +553,48 @@ export const entries: Entry[] = [
       cite: "Pieter Levels, founder of Nomad List",
     },
   },
+  {
+    slug: "buffer",
+    name: "Buffer",
+    kind: "famous",
+    tactic: "sold-first",
+    thenImage: "/screenshots/buffer-then.png",
+    thenCaption: "bufferapp.com, 2010 — a landing page and a fake 'Plans and Pricing' door, before any product existed.",
+    thenYear: 2010,
+    nowImage: "/screenshots/buffer-now.png",
+    nowYear: new Date().getFullYear(),
+    story:
+      "Before building anything, Joel Gascoigne put up a two-page site: one page explaining Buffer, a second showing 'Plans and Pricing.' Clicking a plan just asked for your email — a fake door that tested whether people would actually pay. They did, so he built it; the first paying customer arrived within four days of launch.",
+    sourceUrl: "https://buffer.com/resources/idea-to-paying-customers-in-7-weeks-how-we-did-it/",
+    founderName: "Joel Gascoigne",
+    productUrl: "https://buffer.com",
+    lead: "Joel Gascoigne sold Buffer before it existed — a fake 'Plans and Pricing' page that checked if anyone would actually pay.",
+    body: [
+      {
+        lead: "The ugly part.",
+        text: "Buffer's first version wasn't software — it was two pages. One explained the idea: schedule your tweets to post at the right times. The other, a 'Plans and Pricing' page, let you 'pick' a plan, then admitted there was nothing to buy yet and asked for your email.",
+      },
+      {
+        lead: "What he shipped anyway.",
+        text: "He tweeted the link to see what people thought. Enough clicked through the pricing page and left their email to prove they'd pay — so Joel Gascoigne built the real thing in seven weeks of evenings and weekends. The first paying customer arrived within four days of launch.",
+      },
+      {
+        lead: "Now.",
+        text: "A profitable social-media company doing millions a year — famous for publishing its salaries and metrics in the open.",
+      },
+    ],
+    fileStats: [
+      { label: "Founded", value: "2010" },
+      { label: "The MVP", value: "two pages, no product" },
+      { label: "Time to first $", value: "4 days post-launch" },
+    ],
+    tactics: ["sold-first", "ugly-v1"],
+    lesson: "Don't ask if they like it — make them try to pay. A fake pricing page validates faster than any survey.",
+    quote: {
+      text: "Ask them to click a 'pricing plans' button, choose a plan and then give their email and you're actually getting some validated learning.",
+      cite: "Joel Gascoigne, founder of Buffer",
+    },
+  },
 ];
 
 export const famousEntries = entries.filter((e) => e.kind === "famous");
