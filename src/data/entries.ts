@@ -720,6 +720,90 @@ export const entries: Entry[] = [
       cite: "Marko Saric, co-founder of Plausible",
     },
   },
+  {
+    slug: "convertkit",
+    name: "ConvertKit",
+    kind: "famous",
+    tactic: "dont-scale",
+    thenImage: "/screenshots/convertkit-then.jpg",
+    thenCaption: "convertkit.com, 2014 — 'email marketing for authors,' just before the unglamorous direct-sales grind.",
+    thenYear: 2014,
+    nowImage: "/screenshots/convertkit-now.jpg",
+    nowYear: new Date().getFullYear(),
+    story:
+      "Nathan Barry nearly shut ConvertKit down when revenue slid to $1,337/mo. Instead he did the unscalable thing — hand-emailing bloggers off a Trello board and migrating their email lists from other tools for free, copy-pasting subscribers himself. A year of that grind took it to roughly $98K MRR, with no funding.",
+    sourceUrl: "https://nathanbarry.com/sales/",
+    founderName: "Nathan Barry",
+    founderLink: "https://nathanbarry.com",
+    productUrl: "https://kit.com",
+    lead: "Nathan Barry almost killed ConvertKit at $1,337 a month — then saved it by hand-emailing bloggers and migrating their email lists for free, one copy-paste at a time.",
+    body: [
+      {
+        lead: "The ugly part.",
+        text: "After about 18 months ConvertKit's revenue had slid to $1,337 a month, and Nathan Barry was ready to shut it down. A mentor told him to either kill it or fully commit. He committed — to the least scalable sales process imaginable.",
+      },
+      {
+        lead: "What he did that didn't scale.",
+        text: "He sent personal cold emails to authors and bloggers, tracked every lead across the columns of a Trello board, and offered to migrate them off MailChimp for free — literally copy-pasting subscribers between two browser windows, '$5-an-hour work,' to remove the one reason not to switch.",
+      },
+      {
+        lead: "Now.",
+        text: "In about a year that hand-work took ConvertKit from $1,337 to roughly $98,000 in monthly recurring revenue, and it kept compounding into a bootstrapped, multi-million-dollar business — now called Kit.",
+      },
+    ],
+    fileStats: [
+      { label: "Low point", value: "$1,337 MRR" },
+      { label: "The hustle", value: "cold emails + free migrations" },
+      { label: "~12 months later", value: "~$98K MRR" },
+    ],
+    lesson:
+      "When you have $100 in MRR, five hours of unscalable work to reach $200 is worth it. Do things that don't scale until the channels that do scale kick in.",
+    quote: {
+      text: "If you've got $100 in MRR then spending five hours to get to $200 MRR is absolutely worth it! You should be willing to do basically anything to get that initial traction.",
+      cite: "Nathan Barry, founder of ConvertKit",
+    },
+  },
+  {
+    slug: "feedbackpanda",
+    name: "FeedbackPanda",
+    kind: "famous",
+    tactic: "dont-scale",
+    thenImage: "/screenshots/feedbackpanda-then.png",
+    thenCaption: "feedbackpanda.com, 2018 — a two-person SaaS for online ESL teachers, grown without a dollar of ads.",
+    thenYear: 2018,
+    story:
+      "Arvid Kahl and Danielle Simpson built FeedbackPanda to auto-write student feedback after Danielle felt the pain teaching English online for VIPKID. They never ran an ad — they lived in teachers' Facebook groups, launched with a single helpful comment, and mailed their first 100 subscribers handwritten thank-you postcards. Two people took it to ~$55K MRR and sold it in 2019.",
+    sourceUrl:
+      "https://thebootstrappedfounder.com/from-founding-to-exit-in-two-years-the-feedbackpanda-story/",
+    founderName: "Arvid Kahl & Danielle Simpson",
+    founderLink: "https://thebootstrappedfounder.com",
+    lead: "Arvid Kahl and Danielle Simpson grew FeedbackPanda to ~$55K MRR with two people and zero ad spend — launched on one helpful comment in a Facebook group, thank-you notes mailed by hand.",
+    body: [
+      {
+        lead: "The ugly part.",
+        text: "Danielle was teaching English online for VIPKID, awake from 4am, burning unpaid hours writing required student feedback. So she and Arvid built the dullest possible fix — software that wrote the feedback for her. Their first and only customer, for a while, was Danielle herself.",
+      },
+      {
+        lead: "What they did that didn't scale.",
+        text: "No ads, no funding. They lived inside the Facebook groups where online teachers swapped tips, and revealed FeedbackPanda in a single reply to someone describing exactly that pain. They mailed their first 100 subscribers handwritten thank-you postcards and answered every support message by hand.",
+      },
+      {
+        lead: "Now.",
+        text: "That word-of-mouth machine took two people to about $55K in monthly recurring revenue in roughly two years — no employees, no paid marketing — before they sold the company to SureSwift Capital in 2019.",
+      },
+    ],
+    fileStats: [
+      { label: "Team", value: "two, no employees" },
+      { label: "Marketing budget", value: "$0 — word of mouth" },
+      { label: "~2 years later", value: "~$55K MRR, then sold" },
+    ],
+    lesson:
+      "Embed where your customers already gather and help before you sell. A word-of-mouth machine beat the ad budget they never bought.",
+    quote: {
+      text: "Through comments and posts in the communities where our customers would exchange information, we started a word-of-mouth-machine that did our marketing for us.",
+      cite: "Arvid Kahl, co-founder of FeedbackPanda",
+    },
+  },
 ];
 
 export const famousEntries = entries.filter((e) => e.kind === "famous");
