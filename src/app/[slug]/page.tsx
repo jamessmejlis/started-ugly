@@ -76,6 +76,7 @@ export default async function EntryPage({
         <p className="caption">
           Drag the handle — {entry.name}, {entry.thenYear} → {entry.nowYear ?? "now"}.
         </p>
+        {entry.imageCredit && <p className="caption caption--credit">{entry.imageCredit}</p>}
 
         {entry.quote && (
           <blockquote className="entry__quote">

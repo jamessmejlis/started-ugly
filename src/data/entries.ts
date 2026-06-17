@@ -32,6 +32,7 @@ export type Entry = {
   lesson?: string; // italic "The lesson:" note
   quote?: { text: string; cite: string }; // highlighted founder pull-quote on the detail page
   featuredCard?: { before: string; now: string }; // home featured-card blurb
+  imageCredit?: string; // photo attribution shown under the slider (e.g. CC BY-SA credits)
 };
 
 export const entries: Entry[] = [
@@ -520,9 +521,9 @@ export const entries: Entry[] = [
     name: "Nomad List",
     kind: "famous",
     tactic: "ugly-v1",
-    thenImage: "/screenshots/nomad-list-then.jpg",
-    thenCaption: "nomadlist.com, 2015 — the crowdsourced spreadsheet, turned into a city-ranking site.",
-    thenYear: 2015,
+    thenImage: "/screenshots/nomad-list-sheet.png",
+    thenCaption: "Pieter Levels' original Google Sheet, 2014 — strangers crowdsourced cities and added their own columns: transport, monthly visa cost, best quarter to visit, A/C.",
+    thenYear: 2014,
     nowImage: "/screenshots/nomad-list-now.jpg",
     nowYear: new Date().getFullYear(),
     story:
@@ -552,6 +553,7 @@ export const entries: Entry[] = [
       { label: "Team size", value: "one" },
     ],
     tactics: ["ugly-v1", "sold-first"],
+    imageCredit: "Original spreadsheet screenshot: Pieter Levels / levels.io.",
     lesson: "Your MVP can be a spreadsheet. Ship the data, not the app — let demand tell you what to build.",
     quote: {
       text: "I do work fast and rough.",
@@ -935,9 +937,11 @@ export const entries: Entry[] = [
     name: "Dyson",
     kind: "famous",
     tactic: "ugly-v1",
-    thenImage: "/screenshots/dyson-then.png",
-    thenCaption: "The number is the story — 5,126 failed cyclone prototypes before the one that worked.",
-    thenYear: 1983,
+    thenImage: "/screenshots/dyson-dc01.jpg",
+    thenCaption: "The Dyson DC01, 1993 — the first machine to ship under his own name, after 5,127 cardboard-and-tape prototypes.",
+    thenYear: 1993,
+    nowImage: "/screenshots/dyson-gen5.png",
+    nowYear: new Date().getFullYear(),
     story:
       "James Dyson built his first bagless vacuum from a cardboard-and-tape cyclone strapped over a Hoover, then rebuilt it 5,127 times across about five years — 5,126 of them failures — before the one that worked. No manufacturer would license the design, so he built it himself; the DC01 later became the UK's best-selling vacuum.",
     sourceUrl: "https://www.fastcompany.com/59549/failure-doesnt-suck",
@@ -948,15 +952,15 @@ export const entries: Entry[] = [
     body: [
       {
         lead: "The ugly part.",
-        text: "Frustrated by a vacuum that clogged, James Dyson made a rudimentary cyclone out of cardboard and tape and strapped it over his Hoover in place of the bag. Then he iterated — by hand, one prototype at a time, for about five years.",
+        text: "Frustrated by a vacuum that kept clogging, James Dyson noticed how a nearby sawmill used a giant cyclone to spin sawdust out of the air — so he built a miniature version out of cardboard and gaffer tape and strapped it over his Hoover in place of the bag. It worked. Then he iterated by hand, one prototype at a time, for about five years.",
       },
       {
         lead: "What he shipped anyway.",
-        text: "It took 5,127 prototypes before the cyclone worked the way he wanted, and 5,126 of them failed. No established manufacturer would license a bagless vacuum — it threatened their lucrative bag sales — so Dyson eventually built and sold it himself.",
+        text: "It took 5,127 prototypes before the cyclone worked the way he wanted, and 5,126 of them failed. No established manufacturer would license a bagless vacuum — it threatened their lucrative replacement-bag sales — so Dyson sold it himself, first in Japan, where it shipped as the bright-pink 'G-Force' for around £2,000 a unit.",
       },
       {
         lead: "Now.",
-        text: "The DC01 became the UK's best-selling vacuum, and Dyson grew into a global engineering company — built on 5,126 failures and one that finally worked.",
+        text: "He poured the royalties into his own machine: the DC01 became the UK's best-selling vacuum within about 18 months, and Dyson grew into a global engineering company — vacuums, hair dryers, fans, robots — built on 5,126 failures and the one that finally worked.",
       },
     ],
     fileStats: [
@@ -964,6 +968,9 @@ export const entries: Entry[] = [
       { label: "Failures", value: "5,126" },
       { label: "Built from", value: "cardboard + tape" },
     ],
+    tactics: ["ugly-v1", "duct-tape-demo"],
+    imageCredit:
+      "Then: DC01 photo by Lankyrider, CC BY-SA 4.0, via Wikimedia Commons. Now: dyson.com.",
     lesson:
       "The famous number is the failures, not the success. 5,126 ugly prototypes were the price of the one that worked.",
     quote: {
