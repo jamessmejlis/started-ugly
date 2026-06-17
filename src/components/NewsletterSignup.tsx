@@ -2,30 +2,34 @@
 
 import { useState } from "react";
 
-// beehiiv public subscribe page, e.g. https://your-pub.beehiiv.com/subscribe.
-// When set, the form hands off to beehiiv with the email prefilled; until then
-// it stays honestly unwired (see the home TODO seam).
-const subscribeUrl = process.env.NEXT_PUBLIC_BEEHIIV_SUBSCRIBE_URL;
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export function NewsletterSignup() {
   const [email, setEmail] = useState("");
+  const [website, setWebsite] = useState(""); // honeypot
   const [queued, setQueued] = useState(false);
 
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
-    if (subscribeUrl) {
-      const sep = subscribeUrl.includes("?") ? "&" : "?";
-      window.location.href = `${subscribeUrl}${sep}email=${encodeURIComponent(email)}`;
-      return;
-    }
+    if (!EMAIL_RE.test(email)) return;
+    // Optimistic: capture happens server-side, so never block the wink on the
+    // network. The address lands as a private GitHub issue via /api/subscribe.
     setQueued(true);
+    try {
+      await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, website }),
+      });
+    } catch {
+      // Swallow — MVP. The address is already in flight; we don't re-prompt.
+    }
   }
 
   if (queued) {
     return (
       <p className="signup__help" role="status">
-        Noted — {email}. We still have to wire beehiiv up, but you&apos;re first in line.
+        You&apos;re on the list — {email}. The newsletter itself is still a draft. Fitting.
       </p>
     );
   }
@@ -47,7 +51,20 @@ export function NewsletterSignup() {
           Subscribe
         </button>
       </div>
-      <div className="signup__help">No spam. Unsubscribe anytime. Powered by beehiiv.</div>
+      {/* honeypot — hidden from humans, catnip for bots */}
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        value={website}
+        onChange={(e) => setWebsite(e.target.value)}
+        style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+      />
+      <div className="signup__help">
+        No spam. Unsubscribe anytime — once there&apos;s something to unsubscribe from.
+      </div>
     </form>
   );
 }

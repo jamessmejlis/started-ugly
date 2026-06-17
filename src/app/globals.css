@@ -99,12 +99,6 @@ img { max-width: 100%; height: auto; }
   font-weight: 700;
   letter-spacing: -0.3px;
 }
-.wordmark__working {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.3px;
-  color: var(--faint);
-}
 .tag {
   font-family: var(--mono);
   font-size: 12px;

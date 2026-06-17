@@ -18,7 +18,6 @@ export function SiteHeader({
     <header className="site-header">
       <Link href="/" className="wordmark" aria-label={`${siteName} — home`}>
         <span className="wordmark__name">{siteName}</span>
-        <span className="wordmark__working">[working title]</span>
         <span className="tag">v0.1</span>
       </Link>
 

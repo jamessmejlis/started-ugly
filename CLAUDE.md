@@ -1,8 +1,7 @@
-# started-ugly
+# shitty first drafts
 
 Directory of the embarrassing first versions of successful products, plus a
-community wall of founders shipping ugly right now. Working name — final name
-comes from a community poll.
+community wall of founders shipping ugly right now.
 
 ## Commands
 - `bun install` · `bun run dev` · `bun run build` · `bun test`

@@ -1,4 +1,4 @@
-import { motto, siteName } from "@/lib/site";
+import { siteName } from "@/lib/site";
 
 /** Shared footer line. `home` carries the "built in a weekend, and it shows."
  *  tail; `about` carries the "best read with something unfinished" tail. */
@@ -9,7 +9,7 @@ export function SiteFooter({ variant = "home" }: { variant?: "home" | "about" })
       : "est. 2026 · built in a weekend, and it shows.";
   return (
     <footer className={`site-footer${variant === "home" ? " site-footer--home" : ""}`}>
-      {siteName} · {motto} · {tail}
+      {siteName} · {tail}
     </footer>
   );
 }

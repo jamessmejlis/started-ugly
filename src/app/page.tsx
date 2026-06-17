@@ -11,7 +11,7 @@ import {
   TACTIC_LABELS,
   TACTIC_ORDER,
 } from "@/data/entries";
-import { hoffmanQuote, motto } from "@/lib/site";
+import { hoffmanQuote } from "@/lib/site";
 
 export default function Home() {
   const f = featuredEntry;
@@ -22,7 +22,7 @@ export default function Home() {
       <SiteHeader />
 
       <section className="hero">
-        <div className="kicker">{motto} — a directory of embarrassing first versions</div>
+        <div className="kicker">a directory of embarrassing first versions</div>
         <h1 className="hero__h1">You&apos;re comparing your day one to their year fifteen.</h1>
         <p className="hero__quote">&ldquo;{hoffmanQuote}&rdquo;</p>
         <p className="hero__attr">— Reid Hoffman, founder of LinkedIn</p>

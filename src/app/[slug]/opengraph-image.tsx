@@ -2,7 +2,7 @@ import { readFile } from "node:fs/promises";
 import { extname, join } from "node:path";
 import { ImageResponse } from "next/og";
 import { entries, getEntry } from "@/data/entries";
-import { motto, siteName, siteUrl } from "@/lib/site";
+import { siteName, siteUrl } from "@/lib/site";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
@@ -33,7 +33,7 @@ const domain = (() => {
   try {
     return new URL(siteUrl).host;
   } catch {
-    return "startedugly.com";
+    return "drafts.marulho.co";
   }
 })();
 
@@ -87,7 +87,6 @@ export default async function OgImage({
               v0.1
             </div>
           </div>
-          <div style={{ display: "flex", fontSize: 14, color: ACCENT, fontStyle: "italic" }}>{motto}</div>
         </div>
 
         {/* before / after frame */}

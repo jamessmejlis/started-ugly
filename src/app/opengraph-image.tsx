@@ -1,9 +1,9 @@
 import { ImageResponse } from "next/og";
-import { hoffmanQuote, motto, siteName, siteUrl } from "@/lib/site";
+import { hoffmanQuote, siteName, siteUrl, tagline } from "@/lib/site";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = `${siteName} — ${motto}`;
+export const alt = `${siteName} — ${tagline}`;
 
 const INK = "#111111";
 const ACCENT = "#9a3328";
@@ -16,7 +16,7 @@ export default function OgImage() {
     try {
       return new URL(siteUrl).host;
     } catch {
-      return "startedugly.com";
+      return "drafts.marulho.co";
     }
   })();
 
@@ -54,9 +54,6 @@ export default function OgImage() {
             >
               v0.1
             </div>
-          </div>
-          <div style={{ display: "flex", fontSize: 14, color: ACCENT, fontStyle: "italic" }}>
-            {motto}
           </div>
         </div>
 

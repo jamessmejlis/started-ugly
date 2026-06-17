@@ -3,7 +3,7 @@ import Link from "next/link";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { TodoSeam } from "@/components/TodoSeam";
-import { hoffmanQuote, motto } from "@/lib/site";
+import { hoffmanQuote, siteName } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "You only ever see the after",
@@ -24,7 +24,7 @@ export default function AboutPage() {
       <SiteHeader active="about" />
 
       <article className="about">
-        <div className="kicker">{motto} — a directory of embarrassing first versions</div>
+        <div className="kicker">a directory of embarrassing first versions</div>
         <h1 className="about__h">You only ever see the after.</h1>
         <p className="about__p">
           Every product you admire showed up in your life fully formed — polished, confident,
@@ -32,9 +32,10 @@ export default function AboutPage() {
           rigged comparison. You&apos;re putting your day one next to their year fifteen.
         </p>
         <p className="about__p">
-          Started Ugly collects the day ones. The lesson underneath all of them is the same three
-          words: <b>{motto}</b>. Make it work before you make it pretty. Ship the part that&apos;s
-          useful and be embarrassed about the rest.
+          {siteName}{" "}
+          collects the day ones. The lesson underneath all of them is the same: make it work
+          before you make it pretty. Ship the part that&apos;s useful and be embarrassed about the
+          rest.
         </p>
 
         <blockquote className="about__quote">
