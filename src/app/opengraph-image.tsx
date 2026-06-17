@@ -16,7 +16,7 @@ export default function OgImage() {
     try {
       return new URL(siteUrl).host;
     } catch {
-      return "drafts.marulho.co";
+      return "shittyfirstdrafts.directory";
     }
   })();
 

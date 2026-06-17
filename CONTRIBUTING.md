@@ -3,7 +3,7 @@
 Two ways in:
 
 ## 1. The form
-Use [the submit page](https://drafts.marulho.co/submit). It opens a pre-filled
+Use [the submit page](https://shittyfirstdrafts.directory/submit). It opens a pre-filled
 GitHub issue from your answers — drag your ugly v1 screenshot into the issue and
 hit submit. (You'll need a GitHub account; the screenshot is stored on the issue.)
 
