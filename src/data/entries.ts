@@ -1103,6 +1103,32 @@ export const entries: Entry[] = [
       cite: "Uri Levine, Fall in Love with the Problem, Not the Solution",
     },
   },
+
+  // ── Community: shipping ugly right now ──────────────────────────────
+  {
+    slug: "firestarters",
+    name: "Firestarters",
+    kind: "community",
+    tactic: "ugly-v1",
+    tactics: ["ugly-v1", "duct-tape-demo"],
+    thenImage: "/screenshots/firestarters-then.jpg",
+    thenYear: 2026,
+    story:
+      "Firestarters is a two-sided marketplace for the games industry — studios hiring on one side, creative talent on the other. Sam shipped it functional but rough: the onboarding doesn't yet convince people to post their projects, and with jobs and job-seekers each waiting for the other to show up, only half the platform is really in use.",
+    lead: "A marketplace for the games industry — shipped working, and honest that only half of it has shown up yet.",
+    founderName: "Sam P",
+    founderLink: "https://firestarters.games",
+    productUrl: "https://firestarters.games",
+    fileStats: [
+      { label: "What it is", value: "games-industry marketplace" },
+      { label: "Shipped", value: "2026 — functional, not pretty" },
+      { label: "Now", value: "TBD — they just shipped" },
+    ],
+    quote: {
+      text: "We're in a chicken-and-egg situation — jobs vs job-seekers — so only half the platform is being used.",
+      cite: "Sam P, Firestarters",
+    },
+  },
 ];
 
 export const famousEntries = entries.filter((e) => e.kind === "famous");
