@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { BeforeAfter } from "@/components/BeforeAfter";
 import { SiteHeader } from "@/components/SiteHeader";
 import {
+  communityEntries,
   entries,
   firstEntryWithTactic,
   getEntry,
@@ -40,7 +41,12 @@ export default async function EntryPage({
   if (idx === -1) notFound();
   const entry = entries[idx];
 
-  const number = idx + 1;
+  const isCommunity = entry.kind === "community";
+  // Community entries are numbered within the community wall (no. 1, 2, …),
+  // not by global catalog position — they're not "Hall of fame" rankings.
+  const number = isCommunity
+    ? communityEntries.findIndex((e) => e.slug === entry.slug) + 1
+    : idx + 1;
   const prev = entries[idx - 1];
   const next = entries[idx + 1];
   const era = entry.name.toUpperCase();
@@ -54,7 +60,9 @@ export default async function EntryPage({
       <SiteHeader variant="back" />
 
       <article className="entry">
-        <div className="kicker">Hall of fame — no. {number}</div>
+        <div className="kicker">
+          {isCommunity ? "Shipping ugly right now" : "Hall of fame"} — no. {number}
+        </div>
         <div className="entry__title-row">
           <h1 className="entry__name">{entry.name}</h1>
           <span className="entry__est">Est. {entry.thenYear}</span>
